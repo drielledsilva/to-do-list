@@ -23,11 +23,34 @@ function addTask() {
 
         list.appendChild(newTask);
 
+        // adicionar o evento de remover
+        const removeBtn = newTask.querySelector(".remove-btn").addEventListener("click", function() {
+          removeTask(this);
+        });
+
+        // adicionar evento de completar tarefa
+        const doneBtn = newTask.querySelector(".done-btn").addEventListener("click", function() {
+          completeTask(this);
+        });
+
         // limpar texto
         document.querySelector("#task-title").value = "";
 
     }
-};
+}
+
+// função de remover tarefas
+function removeTask(task) {
+  task.parentNode.remove(true);
+}
+
+// função de completar a tarefa
+function completeTask(task) {
+
+  const taskToComplete = task.parentNode;
+
+  taskToComplete.classList.toggle("done");
+}
 
 
 // evento de adicionar tarefa
